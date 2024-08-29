@@ -1,8 +1,8 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Header from 'components/Header/Header'
-import Home from 'src/Home'
-import About from 'src/About'
-import Vans from 'src/Vans'
+import Home from 'pages/Home'
+import About from 'pages/About'
+import Vans from 'pages/Vans'
 import Footer from 'components/Footer/Footer'
 
 const App = () => {
