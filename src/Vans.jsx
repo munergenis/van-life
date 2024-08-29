@@ -1,6 +1,10 @@
+import PageMain from 'components/PageMain/PageMain'
+
 const Vans = () => {
   return (
-    <main className='flex-1'>Vans</main>
+    <PageMain>
+      Vans
+    </PageMain>
   )
 }
 export default Vans

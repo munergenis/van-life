@@ -1,14 +1,14 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import Header from 'src/components/Header/Header'
+import Header from 'components/Header/Header'
 import Home from 'src/Home'
 import About from 'src/About'
 import Vans from 'src/Vans'
-import Footer from 'src/components/Header/Footer'
+import Footer from 'components/Footer/Footer'
 
 const App = () => {
   return (
     <BrowserRouter>
-      <div className='flex flex-col min-h-screen font-inter'>
+      <div className='flex min-h-screen flex-col font-primary'>
         <Header />
         <Routes>
           <Route path='/' element={<Home />} />

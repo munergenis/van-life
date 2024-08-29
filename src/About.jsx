@@ -1,19 +1,28 @@
+import PageMain from 'components/PageMain/PageMain'
+import heroAboutImg from 'assets/img/hero-about-img.png'
+
 const About = () => {
   return (
-    <main className='flex-1 bg-yellow-50'>
-      <div className='w-full h-96 bg-neutral-700' />
-      <div className='px-8 py-16 w-full flex flex-col gap-8'>
+    <PageMain className='bg-yellow-50'>
+      <img
+        className='h-96 w-full bg-neutral-700 object-cover object-top'
+        src={heroAboutImg}
+      />
+      <div className='flex w-full flex-col gap-8 px-8 py-16'>
         <h2 className='text-4xl font-bold'>Don't squeeze in a sedan when you could relax in a van.</h2>
-        <div className='text-lg flex flex-col gap-4'>
-          <p>Our mission is to enliven your road trip with the perfect travel van rental. Our vans are rectified beforee each trip to ensure your travel plans can go off without a hitch. <br /> (Hitch costs extra 😉)</p>
+        <div className='flex flex-col gap-8 p-10 font-secondary text-xl text-neutral-600'>
+          <p>
+            Our mission is to enliven your road trip with the perfect travel van rental. Our vans are rectified beforee each trip to ensure your travel plans can go off without a hitch. <br />
+            (Hitch costs extra 😉)
+          </p>
           <p>Our team is full of vanlife enthusiasts who know firsthand the magic of touring the world on 4 wheels.</p>
         </div>
-        <div className='bg-orange-300 rounded-lg w-full p-10 flex flex-col gap-8 items-start'>
-          <h2 className='font-bold text-3xl'>Your destination is waiting. <br />Your van is ready.</h2>
-          <button className='text-lg font-bold text-white bg-black rounded-xl py-4 px-6'>Explore our vans</button>
+        <div className='flex w-full flex-col items-start gap-8 rounded-lg bg-orange-300 p-10'>
+          <h2 className='text-3xl font-bold'>Your destination is waiting. <br />Your van is ready.</h2>
+          <button className='rounded-xl bg-black px-6 py-4 text-lg font-bold text-white'>Explore our vans</button>
         </div>
       </div>
-    </main>
+    </PageMain>
   )
 }
 export default About

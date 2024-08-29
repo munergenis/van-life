@@ -7,7 +7,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        inter: 'Inter, sans-serif'
+        primary: 'Inter, sans-serif',
+        secondary: 'Taviraj, serif'
       }
     },
   },
