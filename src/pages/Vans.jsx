@@ -1,6 +1,6 @@
 import PageMain from 'components/PageMain/PageMain'
-import { useEffect } from 'react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import VanCard from 'components/VanCard/VanCard'
 import Badge from 'components/Badge/Badge'
 
@@ -37,12 +37,14 @@ const Vans = () => {
         <ul className='mt-10 grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6'>
           {allVans.map(({ id, name, price, description, imageUrl, type }) => (
             <li key={id}>
-              <VanCard
-                title={name}
-                price={price}
-                type={type}
-                img={imageUrl}
-              />
+              <Link to={`/vans/${id}`}>
+                <VanCard
+                  title={name}
+                  price={price}
+                  type={type}
+                  img={imageUrl}
+                />
+              </Link>
             </li>
           ))}
         </ul>

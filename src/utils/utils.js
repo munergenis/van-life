@@ -9,7 +9,7 @@ export function firstLetterUpp (text) {
 
 export function getColorFromVanType (type) {
   const typeColors = {
-    simple: 'bg-orange-400',
+    simple: 'bg-orange-600/75',
     rugged: 'bg-emerald-700',
     luxury: 'bg-black'
   }
