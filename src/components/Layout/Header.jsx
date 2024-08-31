@@ -1,15 +1,17 @@
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 const Header = () => {
+  const getNavLinkStyle = ({ isActive }) => `underline-offset-8 hover:underline ${isActive && 'underline text-orange-700'}`
+
   return (
     <header className='sticky top-0 z-50 flex w-full items-center justify-between bg-yellow-50 px-8 py-12'>
-      <Link to='/'>
+      <NavLink to='/'>
         <h1 className='text-2xl font-black'>#VANLIFE</h1>
-      </Link>
+      </NavLink>
       <nav className='flex gap-4 font-semibold uppercase'>
-        <Link className='hover:underline hover:underline-offset-8' to='/host'>Host</Link>
-        <Link className='hover:underline hover:underline-offset-8' to='/about'>About</Link>
-        <Link className='hover:underline hover:underline-offset-8' to='/vans'>Vans</Link>
+        <NavLink className={getNavLinkStyle} to='/host'>Host</NavLink>
+        <NavLink className={getNavLinkStyle} to='/about'>About</NavLink>
+        <NavLink className={getNavLinkStyle} to='/vans'>Vans</NavLink>
       </nav>
     </header>
   )
