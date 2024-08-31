@@ -9,15 +9,17 @@ const App = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route element={<Layout />}>
-          <Route path='/' element={<Home />} />
-          <Route path='/about' element={<About />} />
-          <Route path='/vans' element={<Vans />} />
-          <Route path='/vans/:id' element={<Vans.VanDetails />} />
-          <Route element={<Host />}>
-            <Route path='/host' element={<Host.Dashboard />} />
-            <Route path='/host/income' element={<Host.Income />} />
-            <Route path='/host/reviews' element={<Host.Reviews />} />
+        <Route path='/' element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path='about' element={<About />} />
+
+          <Route path='vans' element={<Vans />} />
+          <Route path='vans/:id' element={<Vans.VanDetails />} />
+
+          <Route path='host' element={<Host />}>
+            <Route index element={<Host.Dashboard />} />
+            <Route path='income' element={<Host.Income />} />
+            <Route path='reviews' element={<Host.Reviews />} />
           </Route>
         </Route>
       </Routes>
