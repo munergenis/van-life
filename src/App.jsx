@@ -5,6 +5,9 @@ import About from 'pages/About'
 import Vans from 'pages/Vans/Vans'
 import VanDetails from 'pages/Vans/VanDetails'
 import Dashboard from 'pages/Host/Dashboard'
+import Income from 'pages/Host/Income'
+import Reviews from 'pages/Host/Reviews'
+import Host from 'pages/Host/Host'
 
 const App = () => {
   return (
@@ -15,7 +18,11 @@ const App = () => {
           <Route path='/about' element={<About />} />
           <Route path='/vans' element={<Vans />} />
           <Route path='/vans/:id' element={<VanDetails />} />
-          <Route path='/host' element={<Dashboard />} />
+          <Route element={<Host />}>
+            <Route path='/host' element={<Dashboard />} />
+            <Route path='/host/income' element={<Income />} />
+            <Route path='/host/reviews' element={<Reviews />} />
+          </Route>
         </Route>
       </Routes>
     </BrowserRouter>
