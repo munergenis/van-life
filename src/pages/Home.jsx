@@ -1,10 +1,13 @@
-import PageMain from 'components/PageMain/PageMain'
 import heroHomeImg from 'assets/img/hero-home-img.png'
 import { Link } from 'react-router-dom'
 
 const Home = () => {
   return (
-    <PageMain img={heroHomeImg} className='bg-neutral-700 px-10 py-24 text-white'>
+    <div
+      style={{ backgroundImage: `url(${heroHomeImg})` }}
+      img={heroHomeImg}
+      className='flex-1 bg-neutral-700 bg-cover bg-right px-10 py-24 text-white bg-blend-overlay'
+    >
       <div className='mx-auto flex max-w-screen-lg flex-col gap-6'>
         <h1 className='text-4xl font-black'>
           You got the travel plans,<br />
@@ -21,7 +24,7 @@ const Home = () => {
           Find your van
         </Link>
       </div>
-    </PageMain>
+    </div>
   )
 }
 export default Home

@@ -1,12 +1,15 @@
-import Header from 'components/Header/Header'
-import Footer from 'components/Footer/Footer'
+import Header from 'components/Layout/Header'
+import PageMain from 'components/Layout/PageMain'
+import Footer from 'components/Layout/Footer'
 import { Outlet } from 'react-router-dom'
 
 const Layout = () => {
   return (
     <div className='flex min-h-screen flex-col font-primary'>
       <Header />
-      <Outlet />
+      <PageMain>
+        <Outlet />
+      </PageMain>
       <Footer />
     </div>
 

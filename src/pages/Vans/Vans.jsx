@@ -1,4 +1,3 @@
-import PageMain from 'components/PageMain/PageMain'
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import VanCard from 'components/VanCard/VanCard'
@@ -20,7 +19,7 @@ const Vans = () => {
   }, [])
 
   return (
-    <PageMain className='flex flex-col gap-6 bg-yellow-50 px-10 py-8'>
+    <div className='flex flex-col gap-6 px-10 py-8'>
       <h2 className='text-2xl font-extrabold'>Explore our van options</h2>
       <div className='flex flex-col gap-6'>
         <div className='flex flex-col gap-2'>
@@ -49,7 +48,7 @@ const Vans = () => {
           ))}
         </ul>
       </div>
-    </PageMain>
+    </div>
   )
 }
 export default Vans

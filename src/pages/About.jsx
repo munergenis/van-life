@@ -1,10 +1,9 @@
-import PageMain from 'components/PageMain/PageMain'
 import heroAboutImg from 'assets/img/hero-about-img.png'
 import { Link } from 'react-router-dom'
 
 const About = () => {
   return (
-    <PageMain className='bg-yellow-50'>
+    <>
       <img
         className='h-96 w-full bg-neutral-700 object-cover object-top'
         src={heroAboutImg}
@@ -28,7 +27,7 @@ const About = () => {
           </Link>
         </div>
       </div>
-    </PageMain>
+    </>
   )
 }
 export default About
