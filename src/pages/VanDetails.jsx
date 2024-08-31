@@ -24,9 +24,9 @@ const VanDetails = () => {
           <p className='font-medium underline underline-offset-4'>Back to all vans</p>
         </Link>
 
-        <div className='mx-auto flex flex-col items-center gap-4 lg:flex-row lg:gap-16'>
+        <div className='mx-auto flex max-w-lg flex-col items-center gap-4 lg:max-w-screen-xl lg:flex-row lg:gap-16'>
           <img
-            className='rounded-lg lg:max-w-lg'
+            className='rounded-lg lg:max-w-xl'
             src={vanDetails.imageUrl}
             alt={`${vanDetails.name} van image`}
           />
@@ -43,7 +43,7 @@ const VanDetails = () => {
 
             <p className='text-2xl font-bold'>${vanDetails.price}<span className='text-lg font-normal'>/day</span></p>
 
-            <p className='max-w-xl py-6 font-secondary'>{vanDetails.description}</p>
+            <p className='py-6 font-secondary'>{vanDetails.description}</p>
 
             <button className='rounded-lg bg-orange-400 py-4 text-lg font-bold text-white'>
               Rent this van
