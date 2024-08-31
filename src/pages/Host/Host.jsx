@@ -1,14 +1,16 @@
-import { Outlet, Link } from 'react-router-dom'
+import { Outlet, NavLink } from 'react-router-dom'
 
 const Host = () => {
+  const getNavLinkStyles = ({ isActive }) => `underline-offset-4 ${isActive && 'underline'}`
+
   return (
     <div className='p-10'>
       <nav>
         <ul className='flex gap-4'>
-          <li><Link to='/host'>Dashboard</Link></li>
-          <li><Link to='/host/income'>Income</Link></li>
-          <li><Link to='/host/vans'>Vans</Link></li>
-          <li><Link to='/host/reviews'>Reviews</Link></li>
+          <li><NavLink className={getNavLinkStyles} to='/host' end>Dashboard</NavLink></li>
+          <li><NavLink className={getNavLinkStyles} to='/host/income'>Income</NavLink></li>
+          <li><NavLink className={getNavLinkStyles} to='/host/vans'>Vans</NavLink></li>
+          <li><NavLink className={getNavLinkStyles} to='/host/reviews'>Reviews</NavLink></li>
         </ul>
       </nav>
 
