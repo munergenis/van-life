@@ -7,7 +7,8 @@ const Header = () => {
         <h1 className='text-2xl font-black'>#VANLIFE</h1>
       </Link>
       <nav className='flex gap-4 font-semibold uppercase'>
-        <Link className='underline-offset-8 hover:underline' to='/about'>About</Link>
+        <Link className='hover:underline hover:underline-offset-8' to='/host'>Host</Link>
+        <Link className='hover:underline hover:underline-offset-8' to='/about'>About</Link>
         <Link className='hover:underline hover:underline-offset-8' to='/vans'>Vans</Link>
       </nav>
     </header>
