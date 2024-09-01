@@ -12,12 +12,14 @@ const HostVans = () => {
   }, [])
 
   return (
-    <HostSection className='flex flex-col gap-4'>
-      <HostSection.Title>Your Vans</HostSection.Title>
-      <ul className='flex flex-col gap-6 lg:flex-row lg:flex-wrap'>
-        {hostVans.map(van => <VanListItem van={van} key={van.id} />)}
-      </ul>
-    </HostSection>
+    <>
+      <HostSection>
+        <HostSection.Title>Your Vans</HostSection.Title>
+        <ul className='flex flex-col gap-6 lg:flex-row lg:flex-wrap'>
+          {hostVans.map(van => <VanListItem van={van} key={van.id} />)}
+        </ul>
+      </HostSection>
+    </>
   )
 }
 export default HostVans

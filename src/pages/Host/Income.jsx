@@ -2,9 +2,8 @@ import HostSection from 'components/HostSection/index'
 
 const Income = () => {
   return (
-    <HostSection className='flex flex-col gap-4'>
+    <HostSection>
       <HostSection.Title>Income</HostSection.Title>
-
     </HostSection>
   )
 }
