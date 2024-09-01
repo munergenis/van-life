@@ -1,11 +1,18 @@
 import VanListItem from 'components/VanListItem/VanListItem'
+import { useState, useEffect } from 'react'
 
 const HostVans = () => {
-  const listItems = Array(4).fill(1).map((item, i) => ({ id: item * (i + 1), name: `Van ${item * (i + 1)}`, price: item * (i + 1) * 17 }))
+  const [hostVans, setHostVans] = useState([])
+
+  useEffect(() => {
+    fetch('/api/host/vans')
+      .then(res => res.json())
+      .then(({ vans }) => setHostVans(vans))
+  }, [])
 
   return (
     <ul className='flex flex-col gap-8 lg:flex-row lg:flex-wrap'>
-      {listItems.map(van => <VanListItem van={van} key={van.id} />)}
+      {hostVans.map(van => <VanListItem van={van} key={van.id} />)}
     </ul>
   )
 }

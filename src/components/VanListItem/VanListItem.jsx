@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom'
-import testImg from 'assets/img/hero-about-img.png'
 
 const VanListItem = ({ van }) => {
   return (
@@ -10,8 +9,8 @@ const VanListItem = ({ van }) => {
       >
         <img
           className='aspect-square h-full w-auto rounded-lg object-cover'
-          src={testImg}
-          alt='Img'
+          src={van.imageUrl}
+          alt={`${van.name} van image`}
         />
 
         <div className='flex grow flex-col justify-between py-2'>
