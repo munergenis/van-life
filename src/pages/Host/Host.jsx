@@ -4,7 +4,7 @@ const Host = () => {
   const getNavLinkStyles = ({ isActive }) => `underline-offset-4 ${isActive && 'underline'}`
 
   return (
-    <div className='p-10'>
+    <div className='flex flex-col gap-6 p-10'>
       <nav>
         <ul className='flex gap-4'>
           <li><NavLink className={getNavLinkStyles} to='/host' end>Dashboard</NavLink></li>
