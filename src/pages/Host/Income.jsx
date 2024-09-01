@@ -1,6 +1,10 @@
+import HostSection from 'components/HostSection/index'
+
 const Income = () => {
   return (
-    <div>Income</div>
+    <HostSection>
+      <HostSection.Title>Income</HostSection.Title>
+    </HostSection>
   )
 }
 export default Income

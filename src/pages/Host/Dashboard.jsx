@@ -1,8 +1,10 @@
+import HostSection from 'components/HostSection/index'
+
 const Dashboard = () => {
   return (
-    <div>
-      Dashboard
-    </div>
+    <HostSection>
+      <HostSection.Title>Dashboard</HostSection.Title>
+    </HostSection>
   )
 }
 export default Dashboard
