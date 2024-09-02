@@ -4,6 +4,7 @@ import Home from 'pages/Home'
 import About from 'pages/About'
 import Vans from 'pages/Vans/index'
 import Host from 'pages/Host/index'
+import HostVanDetails from 'pages/Host/HostVans/HostVanDetails/index'
 
 const App = () => {
   return (
@@ -21,7 +22,11 @@ const App = () => {
             <Route path='income' element={<Host.Income />} />
 
             <Route path='vans' element={<Host.HostVans />} />
-            <Route path='vans/:id' element={<Host.HostVans.HostVanDetails />} />
+            <Route path='vans/:id' element={<HostVanDetails />}>
+              <Route index element={<HostVanDetails.Details />} />
+              <Route path='pricing' element={<HostVanDetails.Pricing />} />
+              <Route path='photos' element={<HostVanDetails.Photos />} />
+            </Route>
 
             <Route path='reviews' element={<Host.Reviews />} />
           </Route>
