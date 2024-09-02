@@ -1,10 +1,8 @@
 import { useParams, Link, NavLink, Outlet } from 'react-router-dom'
 import { ArrowLeft, SquarePen } from 'lucide-react'
-import { useState, useEffect, createContext } from 'react'
+import { useState, useEffect } from 'react'
 import Badge from 'components/Badge/Badge'
 import { firstLetterUpp, getColorFromVanType } from 'utils/utils'
-
-export const VanDetailsContext = createContext()
 
 const HostVanDetails = () => {
   const { id } = useParams()
@@ -79,9 +77,7 @@ const HostVanDetails = () => {
         </header>
 
         <main>
-          <VanDetailsContext.Provider value={{ van }}>
-            <Outlet />
-          </VanDetailsContext.Provider>
+          <Outlet context={{ van }} />
         </main>
       </article>
     </div>

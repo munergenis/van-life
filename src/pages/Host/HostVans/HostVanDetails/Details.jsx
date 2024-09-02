@@ -1,9 +1,8 @@
-import { useContext } from 'react'
-import { VanDetailsContext } from './HostVanDetails'
+import { useOutletContext } from 'react-router-dom'
 import { firstLetterUpp } from 'utils/utils'
 
 const Details = () => {
-  const { van } = useContext(VanDetailsContext)
+  const { van } = useOutletContext()
   return (
     <div className='flex flex-col gap-4'>
       <div className='flex flex-col gap-2'>
@@ -22,20 +21,6 @@ const Details = () => {
         <h3 className='text-lg font-black'>Visibility</h3>
         <p>...</p>
       </div>
-
-      {/* <p>
-        <span className='font-bold'>Category: </span>
-
-      </p>
-
-      <p>
-        <span className='font-bold'>Description: </span>
-
-      </p>
-
-      <p>
-        <span className='font-bold'>Visibility: </span>
-      </p> */}
     </div>
   )
 }
