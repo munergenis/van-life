@@ -11,14 +11,18 @@ const HostVanDetails = () => {
   useEffect(() => {
     fetch(`/api/host/vans/${id}`)
       .then(res => res.json())
-      .then(({ vans }) => setVan(vans[0]))
+      .then(({ vans: currentVan }) => setVan(currentVan))
   }, [])
 
   const getNavLinkStyle = ({ isActive }) => `hover:underline underline-offset-4 ${isActive && 'underline font-semibold'}`
 
   return (
     <div className='flex flex-col gap-8'>
-      <Link to='/host/vans' className='flex items-center gap-2'>
+      <Link
+        to='..'
+        relative='path'
+        className='flex items-center gap-2'
+      >
         <ArrowLeft size={20} color='gray' />
         <p className='font-medium underline underline-offset-4'>Back to all vans</p>
       </Link>
@@ -50,7 +54,7 @@ const HostVanDetails = () => {
                 <li>
                   <NavLink
                     className={getNavLinkStyle}
-                    to={`/host/vans/${id}`}
+                    to='.'
                     end
                   >Details
                   </NavLink>
@@ -58,14 +62,14 @@ const HostVanDetails = () => {
                 <li>
                   <NavLink
                     className={getNavLinkStyle}
-                    to={`/host/vans/${id}/pricing`}
+                    to='pricing'
                   >Pricing
                   </NavLink>
                 </li>
                 <li>
                   <NavLink
                     className={getNavLinkStyle}
-                    to={`/host/vans/${id}/photos`}
+                    to='photos'
                   >Photos
                   </NavLink>
                 </li>

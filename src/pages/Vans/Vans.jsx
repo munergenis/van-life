@@ -36,7 +36,7 @@ const Vans = () => {
         <ul className='mt-10 grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6'>
           {allVans.map(van => (
             <li key={van.id}>
-              <Link to={`/vans/${van.id}`}>
+              <Link to={`${van.id}`}>
                 <VanCard
                   van={van}
                 />

@@ -9,9 +9,9 @@ const Header = () => {
         <h1 className='text-2xl font-black'>#VANLIFE</h1>
       </NavLink>
       <nav className='flex gap-4 font-semibold uppercase'>
-        <NavLink className={getNavLinkStyles} to='/host'>Host</NavLink>
-        <NavLink className={getNavLinkStyles} to='/about'>About</NavLink>
-        <NavLink className={getNavLinkStyles} to='/vans'>Vans</NavLink>
+        <NavLink className={getNavLinkStyles} to='host'>Host</NavLink>
+        <NavLink className={getNavLinkStyles} to='about'>About</NavLink>
+        <NavLink className={getNavLinkStyles} to='vans'>Vans</NavLink>
       </nav>
     </header>
   )

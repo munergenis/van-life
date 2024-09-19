@@ -17,7 +17,11 @@ const VanDetails = () => {
 
   return (
     <div className='flex flex-col gap-10 p-10'>
-      <Link to='/vans' className='flex items-center gap-2'>
+      <Link
+        to='..'
+        relative='path'
+        className='flex items-center gap-2'
+      >
         <ArrowLeft size={20} color='gray' />
         <p className='font-medium underline underline-offset-4'>Back to all vans</p>
       </Link>
