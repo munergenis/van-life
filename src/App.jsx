@@ -23,7 +23,7 @@ const App = () => {
 
             <Route path='vans' element={<Host.HostVans />} />
             <Route path='vans/:id' element={<HostVanDetails />}>
-              <Route index element={<HostVanDetails.Details />} />
+              <Route index element={<HostVanDetails.Info />} />
               <Route path='pricing' element={<HostVanDetails.Pricing />} />
               <Route path='photos' element={<HostVanDetails.Photos />} />
             </Route>

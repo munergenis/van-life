@@ -1,9 +1,9 @@
 import HostVanDetails from 'pages/Host/HostVans/HostVanDetails/HostVanDetails'
-import Details from 'pages/Host/HostVans/HostVanDetails/Details'
+import Info from 'pages/Host/HostVans/HostVanDetails/Info'
 import Pricing from 'pages/Host/HostVans/HostVanDetails/Pricing'
 import Photos from 'pages/Host/HostVans/HostVanDetails/Photos'
 
-HostVanDetails.Details = Details
+HostVanDetails.Info = Info
 HostVanDetails.Pricing = Pricing
 HostVanDetails.Photos = Photos
 

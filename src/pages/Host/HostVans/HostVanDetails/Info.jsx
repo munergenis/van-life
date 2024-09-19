@@ -1,7 +1,7 @@
 import { useOutletContext } from 'react-router-dom'
 import { firstLetterUpp } from 'utils/utils'
 
-const Details = () => {
+const Info = () => {
   const { van } = useOutletContext()
   return (
     <div className='flex flex-col gap-4'>
@@ -24,4 +24,4 @@ const Details = () => {
     </div>
   )
 }
-export default Details
+export default Info
