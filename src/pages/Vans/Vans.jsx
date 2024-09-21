@@ -1,27 +1,19 @@
-import { useState, useEffect } from 'react'
 import { Link, useSearchParams, useLocation } from 'react-router-dom'
 import VanCard from 'components/VanCard/VanCard'
 import Badge from 'components/Badge/Badge'
 import { getColorFromVanType } from 'utils/utils'
+import { useVans, useTypes } from 'hooks/vansServices/vansServices'
 
-import { removeDuplicatesFromArr, firstLetterUpp } from 'utils/utils'
+import { firstLetterUpp } from 'utils/utils'
 
 const Vans = () => {
-  const [allVans, setAllVans] = useState([])
-  const [typesList, setTypesList] = useState([])
+  const [allVans] = useVans()
+  const [typesList] = useTypes()
+  console.log(typesList)
   const [searchParams, setSearchParams] = useSearchParams()
   const typeFilter = searchParams.get('type')
 
   const location = useLocation()
-
-  useEffect(() => {
-    fetch('/api/vans')
-      .then(res => res.json())
-      .then(({ vans }) => {
-        setTypesList(removeDuplicatesFromArr(vans.map(van => van.type)))
-        setAllVans(vans)
-      })
-  }, [])
 
   const filteredVans = typeFilter
     ? allVans.filter(van => van.type === typeFilter)
@@ -39,17 +31,16 @@ const Vans = () => {
             Clear filters
           </button>
           <ul className='flex flex-wrap gap-4'>
-            {typesList.map(type => (
+            {typesList.map((type) => (
               <button
-                onClick={() => setSearchParams({ type })}
-                key={type}
+                onClick={() => setSearchParams({ type: type.value })}
+                key={type.value}
               >
                 <Badge
                   className='flex-1 hover:opacity-70'
-                  colorStyle={typeFilter === type && getColorFromVanType(type)}
+                  colorStyle={typeFilter === type.value && getColorFromVanType(type.value)}
                 >
-                  {/* todo change badge for button and change badge style in button */}
-                  {firstLetterUpp(type)}
+                  {firstLetterUpp(type.value)}
                 </Badge>
               </button>
             ))}
