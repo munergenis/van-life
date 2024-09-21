@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { useParams, Link } from 'react-router-dom'
+import { useParams, Link, useLocation } from 'react-router-dom'
 import { ArrowLeft } from 'lucide-react'
 import Badge from 'components/Badge/Badge'
 import { firstLetterUpp, getColorFromVanType } from 'utils/utils'
@@ -7,7 +7,7 @@ import { firstLetterUpp, getColorFromVanType } from 'utils/utils'
 const VanDetails = () => {
   const { id } = useParams()
   const [vanDetails, setVanDetails] = useState({})
-  console.log(vanDetails)
+  const { state } = useLocation()
 
   useEffect(() => {
     fetch(`/api/vans/${id}`)
@@ -18,7 +18,7 @@ const VanDetails = () => {
   return (
     <div className='flex flex-col gap-10 p-10'>
       <Link
-        to='..'
+        to={state ? `..${state}` : '..'}
         relative='path'
         className='flex items-center gap-2'
       >
