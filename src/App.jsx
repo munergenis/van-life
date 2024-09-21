@@ -5,6 +5,7 @@ import About from 'pages/About'
 import Vans from 'pages/Vans/index'
 import Host from 'pages/Host/index'
 import HostVanDetails from 'pages/Host/HostVans/HostVanDetails/index'
+import Page404 from 'pages/Page404'
 
 const App = () => {
   return (
@@ -30,6 +31,7 @@ const App = () => {
 
             <Route path='reviews' element={<Host.Reviews />} />
           </Route>
+          <Route path='*' element={<Page404 />} />
         </Route>
       </Routes>
     </BrowserRouter>
