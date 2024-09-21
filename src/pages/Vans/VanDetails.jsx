@@ -7,7 +7,8 @@ import { firstLetterUpp, getColorFromVanType } from 'utils/utils'
 const VanDetails = () => {
   const { id } = useParams()
   const [vanDetails, setVanDetails] = useState({})
-  const { state } = useLocation()
+  const location = useLocation()
+  const { searchState } = location.state
 
   useEffect(() => {
     fetch(`/api/vans/${id}`)
@@ -15,15 +16,21 @@ const VanDetails = () => {
       .then(({ vans: vanDetailsData }) => setVanDetails(vanDetailsData))
   }, [id])
 
+  const getBackLinkText = () => {
+    const fixedText = 'Back to '
+    const dynamicText = (searchState ? searchState.slice(6) : 'all') + ' vans'
+    return fixedText + dynamicText
+  }
+
   return (
     <div className='flex flex-col gap-10 p-10'>
       <Link
-        to={state ? `..${state}` : '..'}
+        to={searchState ? `..${searchState}` : '..'}
         relative='path'
         className='flex items-center gap-2'
       >
         <ArrowLeft size={20} color='gray' />
-        <p className='font-medium underline underline-offset-4'>Back to all vans</p>
+        <p className='font-medium underline underline-offset-4'>{getBackLinkText()}</p>
       </Link>
 
       <div className='mx-auto flex max-w-lg flex-col items-center gap-4 lg:max-w-screen-xl lg:flex-row lg:gap-16'>

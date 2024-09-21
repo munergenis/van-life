@@ -13,7 +13,6 @@ const Vans = () => {
   const typeFilter = searchParams.get('type')
 
   const location = useLocation()
-  console.log(location)
 
   useEffect(() => {
     fetch('/api/vans')
@@ -60,7 +59,7 @@ const Vans = () => {
         <ul className='mt-10 grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6'>
           {filteredVans.map(van => (
             <li key={van.id}>
-              <Link to={`${van.id}`} state={location.search}>
+              <Link to={`${van.id}`} state={{ searchState: location.search }}>
                 <VanCard
                   van={van}
                 />
