@@ -18,8 +18,13 @@ const VanDetails = () => {
 
   const getBackLinkText = () => {
     const fixedText = 'Back to '
-    const dynamicText = (searchState ? searchState.slice(6) : 'all') + ' vans'
-    return fixedText + dynamicText
+    let dynamicText = 'all'
+    if (searchState) {
+      const urlParams = new URLSearchParams(searchState)
+      const type = urlParams.get('type')
+      dynamicText = type
+    }
+    return fixedText + dynamicText + ' vans'
   }
 
   return (
