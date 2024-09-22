@@ -21,35 +21,35 @@ createServer({
   routes () {
     this.namespace = 'api'
     this.logging = false
-    this.timing = 2000
+    // this.timing = 2000
 
     this.get('/types', (schema, request) => {
-      return new Response(400, {}, { error: 'Error from server' })
-      // return schema.types.all()
+      // return new Response(400, {}, { error: 'Error from server' })
+      return schema.types.all()
     })
 
     this.get('/vans', (schema, request) => {
-      return new Response(400, {}, { error: 'Error from server' })
-      // return schema.vans.all()
+      // return new Response(400, {}, { error: 'Error from server' })
+      return schema.vans.all()
     })
 
     this.get('/vans/:id', (schema, request) => {
-      return new Response(400, {}, { error: 'Error from server' })
-      // const id = request.params.id
-      // return schema.vans.find(id)
+      // return new Response(400, {}, { error: 'Error from server' })
+      const id = request.params.id
+      return schema.vans.find(id)
     })
 
     this.get('/host/vans', (schema, request) => {
       // Hard-code the hostId for now
-      return new Response(400, {}, { error: 'Error from server' })
-      // return schema.vans.where({ hostId: '123' })
+      // return new Response(400, {}, { error: 'Error from server' })
+      return schema.vans.where({ hostId: '123' })
     })
 
     this.get('/host/vans/:id', (schema, request) => {
       // Hard-code the hostId for now
-      return new Response(400, {}, { error: 'Error from server' })
-      // const id = request.params.id
-      // return schema.vans.findBy({ id, hostId: '123' })
+      // return new Response(400, {}, { error: 'Error from server' })
+      const id = request.params.id
+      return schema.vans.findBy({ id, hostId: '123' })
     })
   }
 })
