@@ -7,8 +7,8 @@ import { useVans, useTypes } from 'hooks/vansServices'
 import { firstLetterUpp } from 'utils/utils'
 
 const Vans = () => {
-  const [allVans, loadingVans] = useVans()
-  const [typesList, loadingTypes] = useTypes()
+  const [allVans, loadingVans, errorVans] = useVans()
+  const [typesList, loadingTypes, errorTypes] = useTypes()
   const [searchParams, setSearchParams] = useSearchParams()
   const typeFilter = searchParams.get('type')
 
@@ -19,43 +19,43 @@ const Vans = () => {
     : allVans
 
   const renderTypeFilters = () => {
-    return loadingTypes
-      ? <div>loading filters...</div>
-      : (
-        <ul className='flex flex-wrap gap-4'>
-          {typesList.map((type) => (
-            <button
-              onClick={() => setSearchParams({ type: type.value })}
-              key={type.value}
+    if (errorTypes) return <pre>{errorTypes.message}</pre>
+    if (loadingTypes) return <p>loading filters...</p>
+    return (
+      <ul className='flex flex-wrap gap-4'>
+        {typesList.map((type) => (
+          <button
+            onClick={() => setSearchParams({ type: type.value })}
+            key={type.value}
+          >
+            <Badge
+              className='flex-1 hover:opacity-70'
+              colorStyle={typeFilter === type.value && getColorFromVanType(type.value)}
             >
-              <Badge
-                className='flex-1 hover:opacity-70'
-                colorStyle={typeFilter === type.value && getColorFromVanType(type.value)}
-              >
-                {firstLetterUpp(type.value)}
-              </Badge>
-            </button>
-          ))}
-        </ul>
-        )
+              {firstLetterUpp(type.value)}
+            </Badge>
+          </button>
+        ))}
+      </ul>
+    )
   }
 
   const renderVans = () => {
-    return loadingVans
-      ? <div>loading vans...</div>
-      : (
-        <ul className='mt-10 grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6'>
-          {filteredVans.map(van => (
-            <li key={van.id}>
-              <Link to={`${van.id}`} state={{ searchState: location.search }}>
-                <VanCard
-                  van={van}
-                />
-              </Link>
-            </li>
-          ))}
-        </ul>
-        )
+    if (errorVans) return <pre>{errorVans.message}</pre>
+    if (loadingVans) return <p>loading vans...</p>
+    return (
+      <ul className='mt-10 grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6'>
+        {filteredVans.map(van => (
+          <li key={van.id}>
+            <Link to={`${van.id}`} state={{ searchState: location.search }}>
+              <VanCard
+                van={van}
+              />
+            </Link>
+          </li>
+        ))}
+      </ul>
+    )
   }
 
   return (
