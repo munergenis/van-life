@@ -22,6 +22,39 @@ const VanDetails = () => {
     return fixedText + dynamicText + ' vans'
   }
 
+  const renderVanDetails = () => {
+    return loadingDetails
+      ? <div>loading details...</div>
+      : (
+        <div className='mx-auto flex max-w-lg flex-col items-center gap-4 lg:max-w-screen-xl lg:flex-row lg:gap-16'>
+          <img
+            className='rounded-lg lg:max-w-xl'
+            src={vanDetails.imageUrl}
+            alt={`${vanDetails.name} van image`}
+          />
+
+          <div className='flex flex-col gap-4'>
+            <Badge
+              className='w-fit'
+              colorStyle={getColorFromVanType(vanDetails.type)}
+            >
+              {firstLetterUpp(vanDetails.type)}
+            </Badge>
+
+            <h2 className='text-2xl font-bold'>{vanDetails.name}</h2>
+
+            <p className='text-2xl font-bold'>${vanDetails.price}<span className='text-lg font-normal'>/day</span></p>
+
+            <p className='py-6 font-secondary'>{vanDetails.description}</p>
+
+            <button className='rounded-lg bg-orange-400 py-4 text-lg font-bold text-white'>
+              Rent this van
+            </button>
+          </div>
+        </div>
+        )
+  }
+
   return (
     <div className='flex flex-col gap-10 p-10'>
       <Link
@@ -33,32 +66,7 @@ const VanDetails = () => {
         <p className='font-medium underline underline-offset-4'>{getBackLinkText()}</p>
       </Link>
 
-      <div className='mx-auto flex max-w-lg flex-col items-center gap-4 lg:max-w-screen-xl lg:flex-row lg:gap-16'>
-        <img
-          className='rounded-lg lg:max-w-xl'
-          src={vanDetails.imageUrl}
-          alt={`${vanDetails.name} van image`}
-        />
-
-        <div className='flex flex-col gap-4'>
-          <Badge
-            className='w-fit'
-            colorStyle={getColorFromVanType(vanDetails.type)}
-          >
-            {firstLetterUpp(vanDetails.type)}
-          </Badge>
-
-          <h2 className='text-2xl font-bold'>{vanDetails.name}</h2>
-
-          <p className='text-2xl font-bold'>${vanDetails.price}<span className='text-lg font-normal'>/day</span></p>
-
-          <p className='py-6 font-secondary'>{vanDetails.description}</p>
-
-          <button className='rounded-lg bg-orange-400 py-4 text-lg font-bold text-white'>
-            Rent this van
-          </button>
-        </div>
-      </div>
+      {renderVanDetails()}
     </div>
   )
 }

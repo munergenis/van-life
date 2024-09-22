@@ -21,6 +21,7 @@ createServer({
   routes () {
     this.namespace = 'api'
     this.logging = false
+    this.timing = 2000
 
     this.get('/types', (schema, request) => {
       return schema.types.all()
