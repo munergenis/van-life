@@ -12,8 +12,6 @@ const Vans = () => {
   const [searchParams, setSearchParams] = useSearchParams()
   const typeFilter = searchParams.get('type')
 
-  console.log(loadingTypes, loadingVans)
-
   const location = useLocation()
 
   const filteredVans = typeFilter

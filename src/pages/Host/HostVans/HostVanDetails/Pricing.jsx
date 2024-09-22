@@ -1,7 +1,7 @@
 import { useOutletContext } from 'react-router-dom'
 
 const Pricing = () => {
-  const { van: { price } } = useOutletContext()
+  const { vanDetails: { price } } = useOutletContext()
   return (
     <p>
       <span className='text-xl font-semibold'>${price}</span>

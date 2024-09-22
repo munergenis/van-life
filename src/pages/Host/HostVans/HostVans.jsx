@@ -1,15 +1,9 @@
 import VanListItem from 'components/VanListItem/VanListItem'
 import HostSection from 'components/HostSection/index'
-import { useState, useEffect } from 'react'
+import { useHostVans } from 'hooks/vansServices'
 
 const HostVans = () => {
-  const [hostVans, setHostVans] = useState([])
-
-  useEffect(() => {
-    fetch('/api/host/vans')
-      .then(res => res.json())
-      .then(({ vans }) => setHostVans(vans))
-  }, [])
+  const [hostVans, loadingHostVans] = useHostVans()
 
   return (
     <>

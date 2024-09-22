@@ -1,7 +1,4 @@
 import useApi from 'hooks/useApi'
-// import { useState, useEffect } from 'react'
-
-// const API_URL = '/api'
 
 const useTypes = () => {
   const [data, loading] = useApi('/types')
@@ -15,16 +12,21 @@ const useVans = () => {
   return [data?.vans || [], loading]
 }
 
-const useGetVanById = (id) => {
-  return useApi(`/vans/${id}`)
+const useVanById = (id) => {
+  const [data, loading] = useApi(`/vans/${id}`)
+
+  return [data?.vans || {}, loading]
 }
 
-const useGetHostVans = () => {
-  return useApi('/host/vans')
+const useHostVans = () => {
+  const [data, loading] = useApi('/host/vans')
+  return [data?.vans || [], loading]
 }
 
-const useGetHostVanById = (id) => {
-  return useApi(`/host/vans/${id}`)
+const useHostVanById = (id) => {
+  const [data, loading] = useApi(`/host/vans/${id}`)
+  console.log(data)
+  return [data?.vans || {}, loading]
 }
 
-export { useTypes, useVans, useGetVanById, useGetHostVans, useGetHostVanById }
+export { useTypes, useVans, useVanById, useHostVans, useHostVanById }

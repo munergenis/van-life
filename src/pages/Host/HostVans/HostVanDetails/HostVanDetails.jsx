@@ -1,20 +1,16 @@
 import { useParams, Link, NavLink, Outlet } from 'react-router-dom'
 import { ArrowLeft, SquarePen } from 'lucide-react'
-import { useState, useEffect } from 'react'
 import Badge from 'components/Badge/Badge'
 import { firstLetterUpp, getColorFromVanType } from 'utils/utils'
+import { useHostVanById } from 'hooks/vansServices'
 
 const HostVanDetails = () => {
   const { id } = useParams()
-  const [van, setVan] = useState({})
-
-  useEffect(() => {
-    fetch(`/api/host/vans/${id}`)
-      .then(res => res.json())
-      .then(({ vans: currentVan }) => setVan(currentVan))
-  }, [])
+  const [vanDetails, loadingDetails] = useHostVanById(id)
 
   const getNavLinkStyle = ({ isActive }) => `hover:underline underline-offset-4 ${isActive && 'underline font-semibold'}`
+
+  if (loadingDetails) return <div>loading...</div>
 
   return (
     <div className='flex flex-col gap-8'>
@@ -32,16 +28,16 @@ const HostVanDetails = () => {
           <div className='flex gap-6'>
             <img
               className='aspect-square w-60 rounded-lg'
-              src={van.imageUrl}
-              alt={`${van.name} van image`}
+              src={vanDetails.imageUrl}
+              alt={`${vanDetails.name} van image`}
             />
 
             <div className='flex flex-col justify-center gap-4'>
-              <Badge className='w-fit' colorStyle={getColorFromVanType(van.type)}>{firstLetterUpp(van.type)}</Badge>
+              <Badge className='w-fit' colorStyle={getColorFromVanType(vanDetails.type)}>{firstLetterUpp(vanDetails.type)}</Badge>
               <div className='flex flex-col'>
-                <h2 className='text-2xl font-bold'>{van.name}</h2>
+                <h2 className='text-2xl font-bold'>{vanDetails.name}</h2>
                 <p className='text-lg font-semibold'>
-                  ${van.price}
+                  ${vanDetails.price}
                   <span className='text-base font-light'>/day</span>
                 </p>
               </div>
@@ -81,18 +77,10 @@ const HostVanDetails = () => {
         </header>
 
         <main>
-          <Outlet context={{ van }} />
+          <Outlet context={{ vanDetails }} />
         </main>
       </article>
     </div>
   )
 }
 export default HostVanDetails
-
-// description:
-// hostId:
-// id:
-// imageUrl:
-// name:
-// price:
-// type:

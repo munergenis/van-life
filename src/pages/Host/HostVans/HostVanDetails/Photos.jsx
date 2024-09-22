@@ -1,7 +1,7 @@
 import { useOutletContext } from 'react-router-dom'
 
 const Photos = () => {
-  const { van: { imageUrl, name } } = useOutletContext()
+  const { vanDetails: { imageUrl, name } } = useOutletContext()
 
   return (
     <div className='grid grid-cols-4'>

@@ -1,20 +1,15 @@
-import { useState, useEffect } from 'react'
+// import { useState, useEffect } from 'react'
 import { useParams, Link, useLocation } from 'react-router-dom'
 import { ArrowLeft } from 'lucide-react'
 import Badge from 'components/Badge/Badge'
 import { firstLetterUpp, getColorFromVanType } from 'utils/utils'
+import { useVanById } from 'hooks/vansServices'
 
 const VanDetails = () => {
   const { id } = useParams()
-  const [vanDetails, setVanDetails] = useState({})
   const location = useLocation()
   const { searchState } = location.state
-
-  useEffect(() => {
-    fetch(`/api/vans/${id}`)
-      .then(res => res.json())
-      .then(({ vans: vanDetailsData }) => setVanDetails(vanDetailsData))
-  }, [id])
+  const [vanDetails, loadingDetails] = useVanById(id)
 
   const getBackLinkText = () => {
     const fixedText = 'Back to '
