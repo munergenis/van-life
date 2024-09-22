@@ -5,28 +5,25 @@ const API_URL = '/api'
 const useApi = (endpoint, options = {}) => {
   const [data, setData] = useState(null)
   const [loading, setLoading] = useState(true)
-  const [error, setError] = useState(null)
 
   useEffect(() => {
+    setLoading(true)
     const fetchData = async () => {
-      setLoading(true)
       try {
         const res = await fetch(`${API_URL}${endpoint}`, options)
-        if (!res.ok) {
-          throw new Error(`Error: ${res.status}`)
-        }
         const result = await res.json()
         setData(result)
       } catch (error) {
-        setError(error.message)
+        console.error(error)
       } finally {
         setLoading(false)
       }
     }
-    fetchData()
-  }, [endpoint, options])
 
-  return { data, loading, error }
+    fetchData()
+  }, [endpoint])
+
+  return [data, loading]
 }
 
 export default useApi

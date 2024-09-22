@@ -2,16 +2,17 @@ import { Link, useSearchParams, useLocation } from 'react-router-dom'
 import VanCard from 'components/VanCard/VanCard'
 import Badge from 'components/Badge/Badge'
 import { getColorFromVanType } from 'utils/utils'
-import { useVans, useTypes } from 'hooks/vansServices/vansServices'
+import { useVans, useTypes } from 'hooks/vansServices'
 
 import { firstLetterUpp } from 'utils/utils'
 
 const Vans = () => {
-  const [allVans] = useVans()
-  const [typesList] = useTypes()
-  console.log(typesList)
+  const [allVans, loadingVans] = useVans()
+  const [typesList, loadingTypes] = useTypes()
   const [searchParams, setSearchParams] = useSearchParams()
   const typeFilter = searchParams.get('type')
+
+  console.log(loadingTypes, loadingVans)
 
   const location = useLocation()
 
