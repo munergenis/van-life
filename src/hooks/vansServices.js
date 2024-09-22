@@ -20,12 +20,13 @@ const useVanById = (id) => {
 
 const useHostVans = () => {
   const [data, loading] = useApi('/host/vans')
+
   return [data?.vans || [], loading]
 }
 
 const useHostVanById = (id) => {
   const [data, loading] = useApi(`/host/vans/${id}`)
-  console.log(data)
+
   return [data?.vans || {}, loading]
 }
 
