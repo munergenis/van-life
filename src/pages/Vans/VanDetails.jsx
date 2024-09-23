@@ -4,6 +4,7 @@ import { ArrowLeft } from 'lucide-react'
 import Badge from 'components/Badge/Badge'
 import { firstLetterUpp, getColorFromVanType } from 'utils/utils'
 import { useVanById } from 'hooks/vansServices'
+import Error from 'components/Error/Error'
 
 const VanDetails = () => {
   const { id } = useParams()
@@ -23,7 +24,7 @@ const VanDetails = () => {
   }
 
   const renderVanDetails = () => {
-    if (error) return <pre>{error.message}</pre>
+    if (error) return <Error error={error} />
     if (loadingDetails) return <p>loading details...</p>
     return (
       <div className='mx-auto flex max-w-lg flex-col items-center gap-4 lg:max-w-screen-xl lg:flex-row lg:gap-16'>

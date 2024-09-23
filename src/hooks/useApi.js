@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react'
+import { FetchError } from 'utils/utils'
 
 const API_URL = '/api'
 
-const useApi = (endpoint, options = {}) => {
+const useApi = (endpoint, options = {}, errorMessage) => {
   const [data, setData] = useState(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
@@ -13,7 +14,7 @@ const useApi = (endpoint, options = {}) => {
       try {
         const res = await fetch(`${API_URL}${endpoint}`, options)
         if (!res.ok) {
-          throw new Error(`Error \n\nMessage: Error fetching data \nStatus: ${res.status} \nStatusText: ${res.statusText}`)
+          throw new FetchError(errorMessage, res.status, res.statusText)
         }
         const result = await res.json()
         setData(result)

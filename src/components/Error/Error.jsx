@@ -1,14 +1,8 @@
-import { useRouteError } from 'react-router-dom'
-
-const Error = () => {
-  const error = useRouteError()
-
+const Error = ({ error }) => {
   return (
-    <div>
-      <h2>Ups...</h2>
-      <p>Something went wrong</p>
-      <p>{error.message}</p>
-      <p>{`${error.status} - ${error.statusText}`}</p>
+    <div className='flex flex-col items-center gap-2 rounded-xl bg-orange-300 py-4 font-secondary'>
+      <p>Ooops... {error.message}</p>
+      <p>{`${error.status} | ${error.statusText}`}</p>
     </div>
   )
 }

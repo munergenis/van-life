@@ -3,6 +3,7 @@ import VanCard from 'components/VanCard/VanCard'
 import Badge from 'components/Badge/Badge'
 import { getColorFromVanType } from 'utils/utils'
 import { useVans, useTypes } from 'hooks/vansServices'
+import Error from 'components/Error/Error'
 
 import { firstLetterUpp } from 'utils/utils'
 
@@ -19,7 +20,7 @@ const Vans = () => {
     : allVans
 
   const renderTypeFilters = () => {
-    if (errorTypes) return <pre>{errorTypes.message}</pre>
+    if (errorTypes) return <Error error={errorTypes} />
     if (loadingTypes) return <p>loading filters...</p>
     return (
       <ul className='flex flex-wrap gap-4'>
@@ -41,7 +42,7 @@ const Vans = () => {
   }
 
   const renderVans = () => {
-    if (errorVans) return <pre>{errorVans.message}</pre>
+    if (errorVans) return <Error error={errorVans} />
     if (loadingVans) return <p>loading vans...</p>
     return (
       <ul className='mt-10 grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6'>

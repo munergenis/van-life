@@ -1,31 +1,36 @@
 import useApi from 'hooks/useApi'
 
 const useTypes = () => {
-  const [data, loading, error] = useApi('/types')
+  const errorMessage = 'There was an error getting filters'
+  const [data, loading, error] = useApi('/types', {}, errorMessage)
 
   return [data?.types || [], loading, error]
 }
 
 const useVans = () => {
-  const [data, loading, error] = useApi('/vans')
+  const errorMessage = 'There was an error getting the vans'
+  const [data, loading, error] = useApi('/vans', {}, errorMessage)
 
   return [data?.vans || [], loading, error]
 }
 
 const useVanById = (id) => {
-  const [data, loading, error] = useApi(`/vans/${id}`)
+  const errorMessage = 'There was an error getting the van details'
+  const [data, loading, error] = useApi(`/vans/${id}`, {}, errorMessage)
 
   return [data?.vans || {}, loading, error]
 }
 
 const useHostVans = () => {
-  const [data, loading, error] = useApi('/host/vans')
+  const errorMessage = 'There was an error getting the vans'
+  const [data, loading, error] = useApi('/host/vans', {}, errorMessage)
 
   return [data?.vans || [], loading, error]
 }
 
 const useHostVanById = (id) => {
-  const [data, loading, error] = useApi(`/host/vans/${id}`)
+  const errorMessage = 'There was an error getting the van details'
+  const [data, loading, error] = useApi(`/host/vans/${id}`, {}, errorMessage)
 
   return [data?.vans || {}, loading, error]
 }

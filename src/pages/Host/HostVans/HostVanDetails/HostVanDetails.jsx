@@ -3,6 +3,7 @@ import { ArrowLeft, SquarePen } from 'lucide-react'
 import Badge from 'components/Badge/Badge'
 import { firstLetterUpp, getColorFromVanType } from 'utils/utils'
 import { useHostVanById } from 'hooks/vansServices'
+import Error from 'components/Error/Error'
 
 const HostVanDetails = () => {
   const { id } = useParams()
@@ -11,19 +12,19 @@ const HostVanDetails = () => {
   const getNavLinkStyle = ({ isActive }) => `hover:underline underline-offset-4 ${isActive && 'underline font-semibold'}`
 
   const renderVanDetails = () => {
-    if (error) return <pre>{error.message}</pre>
+    if (error) return <Error error={error} />
     if (loadingDetails) return <p>loading details...</p>
     return (
       <article className='flex flex-col gap-8 rounded bg-white p-8 shadow-md'>
-        <header className='flex flex-col gap-8'>
-          <div className='flex gap-6'>
+        <header className='flex flex-col items-center gap-8 md:items-start'>
+          <div className='flex flex-col gap-6 md:flex-row'>
             <img
               className='aspect-square w-60 rounded-lg'
               src={vanDetails.imageUrl}
               alt={`${vanDetails.name} van image`}
             />
 
-            <div className='flex flex-col justify-center gap-4'>
+            <div className='flex items-start gap-4 md:flex-col md:justify-center'>
               <Badge className='w-fit' colorStyle={getColorFromVanType(vanDetails.type)}>{firstLetterUpp(vanDetails.type)}</Badge>
               <div className='flex flex-col'>
                 <h2 className='text-2xl font-bold'>{vanDetails.name}</h2>
@@ -35,8 +36,8 @@ const HostVanDetails = () => {
             </div>
           </div>
 
-          <div className='flex'>
-            <nav>
+          <div className='flex w-full gap-10'>
+            <nav className='w-full border-b pb-3'>
               <ul className='flex gap-4'>
                 <li>
                   <NavLink
@@ -63,7 +64,7 @@ const HostVanDetails = () => {
               </ul>
             </nav>
 
-            <SquarePen className='ml-auto text-neutral-500' size={22} />
+            <SquarePen className='ml-auto text-orange-600' size={24} />
           </div>
         </header>
 

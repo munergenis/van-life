@@ -16,3 +16,11 @@ export function getColorFromVanType (type) {
 
   return `${typeColors[type]} text-neutral-100`
 }
+
+export class FetchError extends Error {
+  constructor (message, status, statusText) {
+    super(message)
+    this.status = status
+    this.statusText = statusText
+  }
+}
