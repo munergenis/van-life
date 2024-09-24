@@ -1,4 +1,5 @@
 import { NavLink } from 'react-router-dom'
+import { CircleUserRound } from 'lucide-react'
 
 const Header = () => {
   const getNavLinkStyles = ({ isActive }) => `underline-offset-8 hover:underline ${isActive && 'underline text-orange-700'}`
@@ -12,6 +13,7 @@ const Header = () => {
         <NavLink className={getNavLinkStyles} to='host'>Host</NavLink>
         <NavLink className={getNavLinkStyles} to='about'>About</NavLink>
         <NavLink className={getNavLinkStyles} to='vans'>Vans</NavLink>
+        <NavLink to='login'><CircleUserRound /></NavLink>
       </nav>
     </header>
   )
