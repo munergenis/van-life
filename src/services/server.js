@@ -60,7 +60,7 @@ createServer({
 
       const foundUser = schema.users.findBy({ email, password })
       if (!foundUser) {
-        return new Response(401, {}, { message: 'Incorrect password or email' })
+        return new Response(401, {}, JSON.stringify({ message: 'Incorrect user or password' }))
       }
 
       foundUser.password = undefined
