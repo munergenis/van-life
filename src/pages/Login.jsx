@@ -7,9 +7,7 @@ import { loginUser } from 'utils/loginUser'
 const Login = () => {
   const [submitting, setSubmitting] = useState(false)
   const [errorMessage, setErrorMessage] = useState(null)
-  const loggedIn = window.localStorage.getItem('logged-in')
-
-  if (loggedIn) window.history.back()
+  // const loggedIn = window.localStorage.getItem('logged-in')
 
   const location = useLocation()
   const message = location.state?.message || null
@@ -31,7 +29,7 @@ const Login = () => {
     } else {
       console.log(response.data)
       window.localStorage.setItem('logged-in', 'true')
-      navigateTo('/host')
+      navigateTo('/host', { replace: true })
       setErrorMessage(null)
     }
     setSubmitting(false)
