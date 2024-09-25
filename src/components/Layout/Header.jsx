@@ -3,6 +3,11 @@ import { CircleUserRound } from 'lucide-react'
 
 const Header = () => {
   const getNavLinkStyles = ({ isActive }) => `underline-offset-8 hover:underline ${isActive && 'underline text-orange-700'}`
+  const getLoginNavLinkStyles = ({ isActive }) => isActive ? 'text-orange-700' : 'text-black'
+
+  const fakeLogOut = () => {
+    window.localStorage.removeItem('logged-in')
+  }
 
   return (
     <header className='sticky top-0 z-50 flex w-full items-center justify-between bg-yellow-50 px-8 py-12'>
@@ -13,7 +18,9 @@ const Header = () => {
         <NavLink className={getNavLinkStyles} to='host'>Host</NavLink>
         <NavLink className={getNavLinkStyles} to='about'>About</NavLink>
         <NavLink className={getNavLinkStyles} to='vans'>Vans</NavLink>
-        <NavLink to='login'><CircleUserRound /></NavLink>
+        <NavLink className={getLoginNavLinkStyles} to='login'><CircleUserRound /></NavLink>
+        <button className='text-neutral-400' onClick={fakeLogOut}>Log out</button>
+
       </nav>
     </header>
   )

@@ -11,6 +11,7 @@ const Login = () => {
 
   const location = useLocation()
   const message = location.state?.message || null
+  const pathFrom = location.state?.pathFrom || null
   const navigateTo = useNavigate()
 
   const handleOnFormSubmit = async (formData) => {
@@ -29,7 +30,7 @@ const Login = () => {
     } else {
       console.log(response.data)
       window.localStorage.setItem('logged-in', 'true')
-      navigateTo('/host', { replace: true })
+      navigateTo(pathFrom || '/host', { replace: true })
       setErrorMessage(null)
     }
     setSubmitting(false)
