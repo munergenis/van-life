@@ -1,18 +1,24 @@
 import Form from 'components/Form/index'
 import ErrorMessage from 'components/ErrorMessage/ErrorMessage'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { loginUser } from 'utils/loginUser'
 
 const Login = () => {
   const [submitting, setSubmitting] = useState(false)
   const [errorMessage, setErrorMessage] = useState(null)
-  // const loggedIn = window.localStorage.getItem('logged-in')
+  const loggedIn = window.localStorage.getItem('logged-in')
 
   const location = useLocation()
   const message = location.state?.message || null
   const pathFrom = location.state?.pathFrom || null
   const navigateTo = useNavigate()
+
+  useEffect(() => {
+    if (loggedIn) {
+      navigateTo('/host', { replace: true })
+    }
+  }, [])
 
   const handleOnFormSubmit = async (formData) => {
     setSubmitting(true)
